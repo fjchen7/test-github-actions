@@ -18,9 +18,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag: ${{ steps.get_tag.outputs.tag }}
-          # only draft release when pushing tag
-          disable-releaser: ${{ github.ref_type == 'branch' }}
-          # label PR
+          # disable-releaser: ${{ github.ref_type == 'branch' }}
+          disable-releaser: false
           disable-autolabeler: true
     outputs:
       tag: ${{ steps.get_tag.outputs.tag }}
