@@ -5,7 +5,7 @@ on:
     types: [opened, reopened, synchronize]
 
 jobs:
-  create_release_draft:
+  add_label_on_PR:
     runs-on: ubuntu-latest
     steps:
       - name: Add label on PR
