@@ -1,0 +1,23 @@
+name: Release Version
+
+on:
+  push:
+    tags:
+      - 'v*'
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  create_release_draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v5
+        env:
+          run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag: ${{ env.RELEASE_VERSION }}
+          # only draft release when pushing tag
+          disable-releaser: ${{ github.ref_type == 'branch' }}
+          # label PR
+          disable-autolabeler: false
