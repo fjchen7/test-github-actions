@@ -8,7 +8,7 @@ autolabeler:
     branch:
       - '/fix\/.+/'
     title:
-      - '/fix/i'
+      - '^fix.*'
   - label: 'enhancement'
     branch: [/^(feat|feature)\/.*/]
     body:
