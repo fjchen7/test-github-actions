@@ -1,24 +1,33 @@
+# label glob/regex example: https://github.com/ITProKyle/generic-template/blob/master/.github/release-drafter.yml
 autolabeler:
   - label: 'chore'
-    files:
-      - '*.yml'
     branch:
-      - '/docs{0,1}\/.+/'
+      - '/chores{0,1}\/.*/'
+    files:
+      - '.github/**'
+  - label: 'documentation'
+    files:
+      - 'README.md'
+    branch:
+      - '/docs{0,1}\/.*/'
   - label: 'bug'
     branch:
       - '/fix\/.+/'
+      - '/(bug|bugfix|fix|hotfix)\/.*/'
+    # title doesn't work
     title:
-      - '^fix.*'
+      - 'bug'
+      - '/bug/i'
   - label: 'enhancement'
-    branch: [/^(feat|feature)\/.*/]
+    branch:
+      - '/(feat|feature)\/.*/'
+      - '/enhancement\/.*/'
     body:
       - '/JIRA-[0-9]{1,4}/'
+  - label: 'refactor'
+    branch:
+      - '/refactor\/.*/'
 
-name-template: '$RESOLVED_VERSION'
-
-template: |
-  $CHANGES
-category-template: '## $TITLE'
 categories:
   - title: '🚀 Features'
     labels:
@@ -27,23 +36,22 @@ categories:
   - title: '🐛 Bug Fixes'
     labels:
       - 'bug'
-      - 'fix'
-      - 'hotfix'
   - title: '🧰 Maintenance'
     labels:
       - 'refactor'
       - 'chore'
   - title: '📝 Document'
     labels:
-      - 'doc'
-      - 'docs'
       - 'documentation'
 
+category-template: '## $TITLE'
 change-template: '- $TITLE (#$NUMBER) @$AUTHOR'
-
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
-
 sort-by: 'title'
+
+name-template: '$RESOLVED_VERSION'
+template: |
+  $CHANGES
 
 version-resolver:
   major:
