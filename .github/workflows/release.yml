@@ -13,6 +13,7 @@ jobs:
         id: get_tag
         run: echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}
       - name: Draft release
+        id: release_drafter
         uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
