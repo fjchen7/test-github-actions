@@ -1,32 +1,39 @@
 # label glob/regex example: https://github.com/ITProKyle/generic-template/blob/master/.github/release-drafter.yml
 autolabeler:
   - label: 'chore'
-    branch:
-      - '/chores{0,1}\/.*/'
     files:
       - '.github/**'
+    branch:
+      - '/chores{0,1}\/.*/'
+    title:
+      - '^chore.*'
   - label: 'documentation'
     files:
       - 'README.md'
     branch:
       - '/docs{0,1}\/.*/'
+    title:
+      - '^doc.*'
   - label: 'bug'
     branch:
       - '/fix\/.+/'
       - '/(bug|bugfix|fix|hotfix)\/.*/'
-    # title doesn't work
     title:
-      - 'bug'
-      - '/bug/i'
+      - '^bug.*'
   - label: 'enhancement'
     branch:
       - '/(feat|feature)\/.*/'
       - '/enhancement\/.*/'
+    title:
+      - '^(feat|feature).*'
+      - '^enhancement.*'
     body:
       - '/JIRA-[0-9]{1,4}/'
   - label: 'refactor'
     branch:
       - '/refactor\/.*/'
+    title:
+      - '^refactor.*'
 
 categories:
   - title: '🚀 Features'
