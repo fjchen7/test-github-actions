@@ -2,7 +2,7 @@ name: On PR
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, reopened, synchronize, edited]
 
 jobs:
   add_label_on_PR:
