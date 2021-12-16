@@ -1,8 +1,8 @@
-name: On PR
+name: On PR target
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+  pull_request_target:
+    types: [opened, reopened, synchronize, edited]
 
 jobs:
   add_label_on_PR:
